@@ -28,7 +28,7 @@ supported_inference_engines:
     serve_command_thor: |-
       sudo docker run -it --rm --pull always \
         --runtime=nvidia --network host \
-        -v $HOME/.cache/huggingface:/root/.cache/huggingface \
+        -v ~/.cache/huggingface:/root/.cache/huggingface \
         --entrypoint bash \
         vllm/vllm-openai:latest \
         -c "pip install -q 'vllm[audio]' && vllm serve nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-NVFP4 \
@@ -100,7 +100,7 @@ Nemotron Nano 3 Omni is NVIDIA's multimodal reasoning model combining language, 
 ```bash
 sudo docker run -it --rm --pull always \
   --runtime=nvidia --network host \
-  -v $HOME/.cache/huggingface:/root/.cache/huggingface \
+  -v ~/.cache/huggingface:/root/.cache/huggingface \
   --entrypoint bash \
   vllm/vllm-openai:latest \
   -c "pip install -q 'vllm[audio]' && vllm serve nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-NVFP4 \

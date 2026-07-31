@@ -30,7 +30,7 @@ supported_inference_engines:
     serve_command_orin: |-
       sudo docker run -it --rm --pull always \
         --runtime=nvidia --network host \
-        -v $HOME/.cache/huggingface:/root/.cache/huggingface \
+        -v ~/.cache/huggingface:/root/.cache/huggingface \
         ghcr.io/nvidia-ai-iot/llama_cpp:latest-jetson-orin \
         llama-server \
           --hf-repo nvidia/NVIDIA-Nemotron-3-Nano-4B-GGUF \
@@ -41,7 +41,7 @@ supported_inference_engines:
     serve_command_thor: |-
       sudo docker run -it --rm --pull always \
         --runtime=nvidia --network host \
-        -v $HOME/.cache/huggingface:/root/.cache/huggingface \
+        -v ~/.cache/huggingface:/root/.cache/huggingface \
         ghcr.io/nvidia-ai-iot/llama_cpp:latest-jetson-thor \
         llama-server \
           --hf-repo nvidia/NVIDIA-Nemotron-3-Nano-4B-GGUF \

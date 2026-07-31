@@ -26,7 +26,7 @@ supported_inference_engines:
     serve_command_thor: |-
       sudo docker run -it --rm --pull always \
         --runtime=nvidia --network host \
-        -v $HOME/.cache/huggingface:/root/.cache/huggingface \
+        -v ~/.cache/huggingface:/root/.cache/huggingface \
         --entrypoint "" \
         vllm/vllm-openai:latest \
         vllm serve nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4 \

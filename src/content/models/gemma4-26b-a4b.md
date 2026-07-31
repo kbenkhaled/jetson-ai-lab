@@ -27,9 +27,9 @@ serving:
         - thor_t4000
         - orin_agx_64
       serve_command_orin: >-
-        sudo docker run -it --rm --pull always --runtime=nvidia --network host -v $HOME/.cache/huggingface:/root/.cache/huggingface vllm/vllm-openai:latest NeoChen1024/gemma-4-26B-A4B-it-qat-W4A16 --max-model-len 8192 --gpu-memory-utilization 0.7 --enforce-eager --trust-remote-code --reasoning-parser gemma4 --enable-auto-tool-choice --tool-call-parser gemma4 --default-chat-template-kwargs '{"enable_thinking":true}' --speculative-config '{"method":"mtp","model":"google/gemma-4-26B-A4B-it-assistant","num_speculative_tokens":3}'
+        sudo docker run -it --rm --pull always --runtime=nvidia --network host -v ~/.cache/huggingface:/root/.cache/huggingface vllm/vllm-openai:latest NeoChen1024/gemma-4-26B-A4B-it-qat-W4A16 --max-model-len 8192 --gpu-memory-utilization 0.7 --enforce-eager --trust-remote-code --reasoning-parser gemma4 --enable-auto-tool-choice --tool-call-parser gemma4 --default-chat-template-kwargs '{"enable_thinking":true}' --speculative-config '{"method":"mtp","model":"google/gemma-4-26B-A4B-it-assistant","num_speculative_tokens":3}'
       serve_command_thor: >-
-        sudo docker run -it --rm --pull always --runtime=nvidia --network host -v $HOME/.cache/huggingface:/root/.cache/huggingface vllm/vllm-openai:latest RedHatAI/gemma-4-26B-A4B-it-NVFP4 --max-model-len 8192 --gpu-memory-utilization 0.7 --reasoning-parser gemma4 --enable-auto-tool-choice --tool-call-parser gemma4 --default-chat-template-kwargs '{"enable_thinking":true}' --speculative-config '{"method":"mtp","model":"google/gemma-4-26B-A4B-it-assistant","num_speculative_tokens":3}'
+        sudo docker run -it --rm --pull always --runtime=nvidia --network host -v ~/.cache/huggingface:/root/.cache/huggingface vllm/vllm-openai:latest RedHatAI/gemma-4-26B-A4B-it-NVFP4 --max-model-len 8192 --gpu-memory-utilization 0.7 --reasoning-parser gemma4 --enable-auto-tool-choice --tool-call-parser gemma4 --default-chat-template-kwargs '{"enable_thinking":true}' --speculative-config '{"method":"mtp","model":"google/gemma-4-26B-A4B-it-assistant","num_speculative_tokens":3}'
     - engine: "llama.cpp"
       type: "Container"
       modules_supported:
@@ -39,13 +39,13 @@ serving:
       serve_command_orin: |-
         sudo docker run -it --rm --pull always \
           --runtime=nvidia --network host \
-          -v $HOME/.cache/huggingface:/root/.cache/huggingface \
+          -v ~/.cache/huggingface:/root/.cache/huggingface \
           ghcr.io/nvidia-ai-iot/llama_cpp:latest-jetson-orin \
           llama-server -hf ggml-org/gemma-4-26B-A4B-it-GGUF:Q4_K_M
       serve_command_thor: |-
         sudo docker run -it --rm --pull always \
           --runtime=nvidia --network host \
-          -v $HOME/.cache/huggingface:/root/.cache/huggingface \
+          -v ~/.cache/huggingface:/root/.cache/huggingface \
           ghcr.io/nvidia-ai-iot/llama_cpp:latest-jetson-thor \
           llama-server -hf ggml-org/gemma-4-26B-A4B-it-GGUF:Q4_K_M
 benchmark_key: "Gemma 4 26B-A4B"

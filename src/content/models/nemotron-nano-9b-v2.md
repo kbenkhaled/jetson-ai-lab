@@ -28,6 +28,7 @@ supported_inference_engines:
     serve_command_thor: |-
       sudo docker run -it --rm --pull always \
         --runtime=nvidia --network host \
+        -v ~/.cache/huggingface:/root/.cache/huggingface \
         vllm/vllm-openai:latest \
         nvidia/NVIDIA-Nemotron-Nano-9B-v2-NVFP4
 benchmark_key: "Nemotron Nano 9B V2"

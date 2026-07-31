@@ -29,6 +29,7 @@ supported_inference_engines:
     serve_command_orin: |-
       sudo docker run -it --rm --pull always \
         --runtime=nvidia --network host \
+        -v ~/.cache/huggingface:/root/.cache/huggingface \
         ghcr.io/nvidia-ai-iot/vllm:latest-jetson-orin \
         vllm serve Kbenkhaled/Qwen3.5-27B-quantized.w4a16 \
           --gpu-memory-utilization 0.8 \
@@ -39,6 +40,7 @@ supported_inference_engines:
     serve_command_thor: |-
       sudo docker run -it --rm --pull always \
         --runtime=nvidia --network host \
+        -v ~/.cache/huggingface:/root/.cache/huggingface \
         vllm/vllm-openai:latest \
         Kbenkhaled/Qwen3.5-27B-NVFP4 \
           --gpu-memory-utilization 0.8 \
@@ -87,6 +89,7 @@ Qwen3.5 27B is a dense language model from Alibaba Cloud's Qwen3.5 family. With 
 
 ```bash
 sudo docker run -it --rm --pull always --runtime=nvidia --network host \
+  -v ~/.cache/huggingface:/root/.cache/huggingface \
   ghcr.io/nvidia-ai-iot/vllm:latest-jetson-orin \
   vllm serve Kbenkhaled/Qwen3.5-27B-quantized.w4a16 \
     --gpu-memory-utilization 0.8 --enable-prefix-caching \
@@ -99,6 +102,7 @@ sudo docker run -it --rm --pull always --runtime=nvidia --network host \
 
 ```bash
 sudo docker run -it --rm --pull always --runtime=nvidia --network host \
+  -v ~/.cache/huggingface:/root/.cache/huggingface \
   vllm/vllm-openai:latest \
   Kbenkhaled/Qwen3.5-27B-NVFP4 \
     --gpu-memory-utilization 0.8 --enable-prefix-caching \

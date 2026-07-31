@@ -31,9 +31,9 @@ serving:
         - orin_agx_64
         - orin_nx_16
       serve_command_orin: >-
-        sudo docker run -it --rm --pull always --runtime=nvidia --network host -v $HOME/.cache/huggingface:/root/.cache/huggingface vllm/vllm-openai:latest stelterlab/NVIDIA-Nemotron-3-Nano-30B-A3B-AWQ --max-model-len 8192 --gpu-memory-utilization 0.7 --reasoning-parser nemotron_v3 --enable-auto-tool-choice --tool-call-parser qwen3_coder
+        sudo docker run -it --rm --pull always --runtime=nvidia --network host -v ~/.cache/huggingface:/root/.cache/huggingface vllm/vllm-openai:latest stelterlab/NVIDIA-Nemotron-3-Nano-30B-A3B-AWQ --max-model-len 8192 --gpu-memory-utilization 0.7 --reasoning-parser nemotron_v3 --enable-auto-tool-choice --tool-call-parser qwen3_coder
       serve_command_thor: >-
-        sudo docker run -it --rm --pull always --runtime=nvidia --network host -v $HOME/.cache/huggingface:/root/.cache/huggingface vllm/vllm-openai:latest nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-NVFP4 --trust-remote-code --max-model-len 8192 --gpu-memory-utilization 0.7 --reasoning-parser nemotron_v3 --enable-auto-tool-choice --tool-call-parser qwen3_coder
+        sudo docker run -it --rm --pull always --runtime=nvidia --network host -v ~/.cache/huggingface:/root/.cache/huggingface vllm/vllm-openai:latest nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-NVFP4 --trust-remote-code --max-model-len 8192 --gpu-memory-utilization 0.7 --reasoning-parser nemotron_v3 --enable-auto-tool-choice --tool-call-parser qwen3_coder
     - engine: "Ollama"
       type: "CLI"
       # Same CLI on AGX Orin 64GB-class and Thor (Jetson matrix tabs below).

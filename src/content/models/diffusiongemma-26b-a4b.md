@@ -25,9 +25,9 @@ serving:
         - thor_t4000
         - orin_agx_64
       serve_command_orin: >-
-        sudo docker run -it --rm --pull always --runtime=nvidia --network host -v $HOME/.cache/huggingface:/root/.cache/huggingface vllm/vllm-openai:latest cyankiwi/diffusiongemma-26B-A4B-it-AWQ-INT4 --max-model-len 8192 --gpu-memory-utilization 0.7 --reasoning-parser gemma4 --enable-auto-tool-choice --tool-call-parser gemma4 --default-chat-template-kwargs '{"enable_thinking":true}'
+        sudo docker run -it --rm --pull always --runtime=nvidia --network host -v ~/.cache/huggingface:/root/.cache/huggingface vllm/vllm-openai:latest cyankiwi/diffusiongemma-26B-A4B-it-AWQ-INT4 --max-model-len 8192 --gpu-memory-utilization 0.7 --reasoning-parser gemma4 --enable-auto-tool-choice --tool-call-parser gemma4 --default-chat-template-kwargs '{"enable_thinking":true}'
       serve_command_thor: >-
-        sudo docker run -it --rm --pull always --runtime=nvidia --network host -e VLLM_USE_V2_MODEL_RUNNER=1 -v $HOME/.cache/huggingface:/root/.cache/huggingface vllm/vllm-openai:latest nvidia/diffusiongemma-26B-A4B-it-NVFP4 --trust-remote-code --max-model-len 8192 --gpu-memory-utilization 0.7 --attention-backend TRITON_ATTN --reasoning-parser gemma4 --enable-auto-tool-choice --tool-call-parser gemma4 --default-chat-template-kwargs '{"enable_thinking":true}' --override-generation-config '{"max_new_tokens":null}'
+        sudo docker run -it --rm --pull always --runtime=nvidia --network host -e VLLM_USE_V2_MODEL_RUNNER=1 -v ~/.cache/huggingface:/root/.cache/huggingface vllm/vllm-openai:latest nvidia/diffusiongemma-26B-A4B-it-NVFP4 --trust-remote-code --max-model-len 8192 --gpu-memory-utilization 0.7 --attention-backend TRITON_ATTN --reasoning-parser gemma4 --enable-auto-tool-choice --tool-call-parser gemma4 --default-chat-template-kwargs '{"enable_thinking":true}' --override-generation-config '{"max_new_tokens":null}'
 ---
 
 DiffusionGemma 26B-A4B can be served on Jetson Thor with the official NVIDIA NVFP4 checkpoint and on Jetson Orin with an AWQ-INT4 checkpoint.

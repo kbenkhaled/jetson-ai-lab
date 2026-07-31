@@ -38,11 +38,13 @@ supported_inference_engines:
     serve_command_orin: |-
       sudo docker run -it --rm --pull always \
         --runtime=nvidia --network host \
+        -v ~/.cache/huggingface:/root/.cache/huggingface \
         ghcr.io/nvidia-ai-iot/vllm:latest-jetson-orin \
         vllm serve RedHatAI/Qwen3-30B-A3B-quantized.w4a16
     serve_command_thor: |-
       sudo docker run -it --rm --pull always \
         --runtime=nvidia --network host \
+        -v ~/.cache/huggingface:/root/.cache/huggingface \
         vllm/vllm-openai:latest \
         RedHatAI/Qwen3-30B-A3B-quantized.w4a16
 benchmark_key: "Qwen3-30B-A3B"
